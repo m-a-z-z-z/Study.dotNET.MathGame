@@ -4,77 +4,129 @@ using MathGame;
 
 string? username = null;
 DateTime date = DateTime.UtcNow;
+User user = new User();
 
-while (username == null)
+NavigateMenu();
+void NavigateMenu()
 {
-    Console.WriteLine("Please type your name: ");
-    username = Console.ReadLine();
-}
+    ConsoleKeyInfo key;
+    int selectedOption = 1;
+    bool isSelected = false;
+    DisplayMenu(1);
 
-Menu();
-void Menu()
-{
-    Console.WriteLine("##############################################");
-    Console.WriteLine("#           Welcome to Math Game             #");
-    Console.WriteLine("#           1. New game                      #");
-    Console.WriteLine("#           2. Load game                     #");
-    Console.WriteLine("#           3. View highscores               #");
-    Console.WriteLine("#           4. Quit                          #");
-    Console.WriteLine("##############################################");
-
-    ConsoleKeyInfo keyInfo;
-    int selectedOption = ;
-
-    do
+    while (!isSelected)
     {
-        keyInfo = Console.ReadKey();
+        key = Console.ReadKey(true);
 
-        switch (keyInfo.Key)
+        switch(key.Key)
         {
-            case ConsoleKey.UpArrow:
-                selectedOption = Math.Max(selectedOption--, 1);
-                break;
             case ConsoleKey.DownArrow:
-                selectedOption = Math.Min(selectedOption++, 4);
-                break;
-            case ConsoleKey.Enter:
-                switch (selectedOption)
+                selectedOption++;
+                Console.Clear();
+                if (selectedOption > 4)
                 {
-                    case 1:
-                        CreateUser();
-                        break;
-                    case 2:
-                        //SelectUser();
-                        break;
-                    case 3:
-                        //ViewHighScores();
-                        break;
-                    case 4:
-                        Environment.Exit(0);
-                        break;
+                    selectedOption = 1;
+                    DisplayMenu(selectedOption);   // will cause menu to wrap back around to first menu item
                 }
+                else
+                    DisplayMenu(selectedOption);
+                break;
+
+            case ConsoleKey.UpArrow:
+                selectedOption--;
+                Console.Clear();
+                if (selectedOption < 1)
+                {
+                    selectedOption = 4;
+                    DisplayMenu(selectedOption);   // will cause menu to wrap back around to last menu item
+                }
+                else
+                    DisplayMenu(selectedOption);
+                break;
+
+            case ConsoleKey.Enter:
+                isSelected = true;
                 break;
         }
-
-        Console.Clear();
-        Console.WriteLine("##############################################");
-        Console.WriteLine("#           Welcome to Math Game             #");
-        Console.WriteLine("#           1. New game                      #");
-        Console.WriteLine("#           2. Load game                     #");
-        Console.WriteLine("#           3. View highscores               #");
-        Console.WriteLine("#           4. Quit                          #");
-        Console.WriteLine("##############################################");
-    } while (keyInfo.Key != ConsoleKey.Enter);
-
-    //var menuSelection = Console.ReadLine();
-
+    }
+    DisplayMenu(selectedOption);
 
 }
 
+void DisplayMenu(int selection)
+{
+
+    switch (selection)
+    {
+        case 1:
+            Console.WriteLine("\t\t##############################################");
+            Console.WriteLine("\t\t#           Welcome to Math Game             #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#                 \u001b[32mNew game\u001b[0m                   #");
+            Console.WriteLine("\t\t#                 Load game                  #");
+            Console.WriteLine("\t\t#              View highscores               #");
+            Console.WriteLine("\t\t#                   Quit                     #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#   Use arrows keys to navigate menu items.  #");
+            Console.WriteLine("\t\t#          Use enter key to select.          #");
+            Console.WriteLine("\t\t##############################################");
+            break;
+        case 2:
+            Console.WriteLine("\t\t##############################################");
+            Console.WriteLine("\t\t#           Welcome to Math Game             #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#                 New game                   #");
+            Console.WriteLine("\t\t#                 \u001b[32mLoad game\u001b[0m                  #");
+            Console.WriteLine("\t\t#              View highscores               #");
+            Console.WriteLine("\t\t#                   Quit                     #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#   Use arrows keys to navigate menu items.  #");
+            Console.WriteLine("\t\t#          Use enter key to select.          #");
+            Console.WriteLine("\t\t##############################################");
+            break;
+        case 3:
+            Console.WriteLine("\t\t##############################################");
+            Console.WriteLine("\t\t#           Welcome to Math Game             #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#                 New game                   #");
+            Console.WriteLine("\t\t#                 Load game                  #");
+            Console.WriteLine("\t\t#              \u001b[32mView highscores\u001b[0m               #");
+            Console.WriteLine("\t\t#                   Quit                     #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#   Use arrows keys to navigate menu items.  #");
+            Console.WriteLine("\t\t#          Use enter key to select.          #");
+            Console.WriteLine("\t\t##############################################");
+            break;
+        case 4:
+            Console.WriteLine("\t\t##############################################");
+            Console.WriteLine("\t\t#           Welcome to Math Game             #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#                 New game                   #");
+            Console.WriteLine("\t\t#                 Load game                  #");
+            Console.WriteLine("\t\t#              View highscores               #");
+            Console.WriteLine("\t\t#                   \u001b[32mQuit\u001b[0m                     #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#   Use arrows keys to navigate menu items.  #");
+            Console.WriteLine("\t\t#          Use enter key to select.          #");
+            Console.WriteLine("\t\t##############################################");
+            break;
+        default:
+            Console.WriteLine("\t\t##############################################");
+            Console.WriteLine("\t\t#           Welcome to Math Game             #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#                 \u001b[32mNew game\u001b[0m                   #");
+            Console.WriteLine("\t\t#                 Load game                  #");
+            Console.WriteLine("\t\t#              View highscores               #");
+            Console.WriteLine("\t\t#                   Quit                     #");
+            Console.WriteLine("\t\t#                                            #");
+            Console.WriteLine("\t\t#   Use arrows keys to navigate menu items.  #");
+            Console.WriteLine("\t\t##############################################");
+            break;
+    }
+}
 
 void CreateUser()
 {
-    User user = new User();
     Console.WriteLine("Enter username to track score: ");
     user.name = Console.ReadLine();
     GameSelect();
@@ -115,6 +167,7 @@ void GameSelect()
             break;
     }
 }
+
 void Addition()
 {
     Console.WriteLine("Addition game selected...");
