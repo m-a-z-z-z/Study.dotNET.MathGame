@@ -13,6 +13,7 @@ void NavigateMenu()
     int selectedOption = 1;
     bool isSelected = false;
     DisplayMenu(1);
+    Console.WriteLine("testing rollback");
 
     while (!isSelected)
     {
