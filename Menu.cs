@@ -8,11 +8,12 @@ namespace MathGame
 {
     internal class Menu
     {
-
+        internal static User user = new User();
         internal static void MainMenu()
         { 
             Console.CursorVisible = false;
             ConsoleKeyInfo key;
+            
             int selectedOption = 1;
             bool isSelected = false;
             (int left, int top) = Console.GetCursorPosition();  // cursor position coordinates look for column num (left) and row num (top). GetCursorPosition will get the current col and row and put it in left and top int variables. 
@@ -60,7 +61,7 @@ namespace MathGame
                         {
                             Console.Clear();
                             Console.CursorVisible = true;
-                            GameSelectMenu();
+                            GameSelectMenu(user);
                         }
                         else if (selectedOption == 2)
                         {
@@ -84,7 +85,7 @@ namespace MathGame
             }
         }
 
-        internal static void GameSelectMenu()
+        internal static void GameSelectMenu(User user)
         {
             string tabs = "\t\t\t\t";
             var games = new Games();
@@ -105,22 +106,22 @@ namespace MathGame
                 case "A":
                     Console.Clear();
                     Console.WriteLine($"{tabs}######### Addition game selected... #########\n");
-                    games.Addition();
+                    games.Addition(user);
                     break;
                 case "S":
                     Console.Clear();
                     Console.WriteLine($"{tabs}######### Subtraction game selected... #########\n");
-                    games.Subtraction();
+                    games.Subtraction(user);
                     break;
                 case "M":
                     Console.Clear();
                     Console.WriteLine($"{tabs}######### Multiplication game selected... #########\n");
-                    games.Multiplication();
+                    games.Multiplication(user);
                     break;
                 case "D":
                     Console.Clear();
                     Console.WriteLine($"{tabs}######### Division game selected... #########\n");
-                    games.Division();
+                    games.Division(user);
                     break;
                 case "R":
                     Console.Clear();

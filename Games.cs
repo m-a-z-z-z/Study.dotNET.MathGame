@@ -13,10 +13,8 @@ namespace MathGame
         string? answer;
         int firstNum;
         int secondNum;
-        int result;
-        int score;
 
-        internal void Addition()
+        internal void Addition(User user)
         {
             Random random = new Random();
             firstNum = random.Next(1, 99);
@@ -28,28 +26,28 @@ namespace MathGame
             while (int.Parse(answer) != firstNum + secondNum)
             {
                 Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.\n");
-                score = 0;
+                user.score = 0;
                 Console.Write($"\t\t\t\t{firstNum} + {secondNum} = ? ");
                 answer = Console.ReadLine();
             }
 
-            score++;
-            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {score}\n");
+            user.score++;
+            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
             Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
             var continueOrReturn = Console.ReadLine();
 
             if (continueOrReturn.Trim().ToUpper() == "R")
             {
-                Menu.GameSelectMenu();
+                Menu.GameSelectMenu(user);
             }
             else
             {
-                Addition();
+                Addition(user);
             }
 
         }
 
-        internal void Subtraction()
+        internal void Subtraction(User user)
         {
             Random random = new Random();
             firstNum = random.Next(1, 99);
@@ -61,27 +59,27 @@ namespace MathGame
             while (int.Parse(answer) != firstNum - secondNum)
             {
                 Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.\n");
-                score = 0;
+                user.score = 0;
                 Console.Write($"{tabs}{firstNum} - {secondNum} = ? ");
                 answer = Console.ReadLine();
             }
 
-            score++;
-            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {score}\n");
+            user.score++;
+            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
             Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
             var continueOrReturn = Console.ReadLine();
 
             if (continueOrReturn.Trim().ToUpper() == "R")
             {
-                Menu.GameSelectMenu();
+                Menu.GameSelectMenu(user);
             }
             else
             {
-                Subtraction();
+                Subtraction(user);
             }
         }
 
-        internal void Multiplication()
+        internal void Multiplication(User user)
         {
             Random random = new Random();
             firstNum = random.Next(1, 99);
@@ -93,27 +91,27 @@ namespace MathGame
             while (int.Parse(answer) != firstNum * secondNum)
             {
                 Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.");
-                score = 0;
+                user.score = 0;
                 Console.Write($"\t\t\t\t{firstNum} x {secondNum} = ? ");
                 answer = Console.ReadLine();
             }
 
-            score++;
-            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {score}\n");
+            user.score++;
+            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
             Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
             var continueOrReturn = Console.ReadLine();
 
             if (continueOrReturn.Trim().ToUpper() == "R")
             {
-                Menu.GameSelectMenu();
+                Menu.GameSelectMenu(user);
             }
             else
             {
-                Multiplication();
+                Multiplication(user);
             }
         }
 
-        internal void Division()
+        internal void Division(User user)
         {
             Random random = new Random();
             firstNum = random.Next(1, 99);
@@ -131,23 +129,23 @@ namespace MathGame
             while (int.Parse(answer) != firstNum / secondNum)
             {
                 Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.");
-                score = 0;
+                user.score = 0;
                 Console.Write($"{tabs}{firstNum} / {secondNum} = ? ");
                 answer = Console.ReadLine();
             }
 
-            score++;
-            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {score}\n");
+            user.score++;
+            Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
             Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
             var continueOrReturn = Console.ReadLine();
 
             if (continueOrReturn.Trim().ToUpper() == "R")
             {
-                Menu.GameSelectMenu();
+                Menu.GameSelectMenu(user);
             }
             else
             {
-                Division();
+                Division(user);
             }
         }
 
