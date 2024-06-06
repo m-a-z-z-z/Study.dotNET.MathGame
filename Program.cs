@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.Design;
-using MathGame;
+﻿using MathGame;
 
 Menu.MainMenu();
+
