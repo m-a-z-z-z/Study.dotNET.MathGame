@@ -3,6 +3,7 @@ using MathGame;
 
 // Var declartion
 string? username = null;
+string tabs = "\t\t\t\t";
 var random = new Random();
 int firstNum;
 int secondNum;
@@ -32,17 +33,17 @@ void Menu()
         // : = else if condition is false
         // if selectedOption is equal to 1, insert color string, else insert empty string
 
-        Console.WriteLine("\t\t\t\t##############################################");
-        Console.WriteLine("\t\t\t\t#           Welcome to Math Game             #");
-        Console.WriteLine("\t\t\t\t#                                            #");
-        Console.WriteLine($"\t\t\t\t#{(selectedOption == 1 ? color : "")}                 New game\u001b[0m                   #");
-        Console.WriteLine($"\t\t\t\t#{(selectedOption == 2 ? color : "")}                 Load game\u001b[0m                  #");
-        Console.WriteLine($"\t\t\t\t#{(selectedOption == 3 ? color : "")}              View highscores\u001b[0m               #");
-        Console.WriteLine($"\t\t\t\t#{(selectedOption == 4 ? color : "")}                   Quit\u001b[0m                     #");
-        Console.WriteLine("\t\t\t\t#                                            #");
-        Console.WriteLine("\t\t\t\t#   Use arrows keys to navigate menu items.  #");
-        Console.WriteLine("\t\t\t\t#          Use enter key to select.          #");
-        Console.WriteLine("\t\t\t\t##############################################");
+        Console.WriteLine($"{tabs}##############################################");
+        Console.WriteLine($"{tabs}#           Welcome to Math Game             #");
+        Console.WriteLine($"{tabs}#                                            #");
+        Console.WriteLine($"{tabs}#{(selectedOption == 1 ? color : "")}                 New game\u001b[0m                   #");
+        Console.WriteLine($"{tabs}#{(selectedOption == 2 ? color : "")}                 Load game\u001b[0m                  #");
+        Console.WriteLine($"{tabs}#{(selectedOption == 3 ? color : "")}              View highscores\u001b[0m               #");
+        Console.WriteLine($"{tabs}#{(selectedOption == 4 ? color : "")}                   Quit\u001b[0m                     #");
+        Console.WriteLine($"{tabs}#                                            #");
+        Console.WriteLine($"{tabs}#   Use arrows keys to navigate menu items.  #");
+        Console.WriteLine($"{tabs}#          Use enter key to select.          #");
+        Console.WriteLine($"{tabs}##############################################");
 
         key = Console.ReadKey(true);
 
@@ -89,36 +90,44 @@ void Menu()
 
 void CreateUser()
 {
-    Console.Write("\t\t\t\tEnter username to track score: ");
+    Console.Write($"{tabs}Enter username to track score: ");
     user.name = Console.ReadLine();
     GameSelect();
 }
 
 void GameSelect()
 {
-    Console.WriteLine("\t\t\t\t##############################################");
-    Console.WriteLine("\t\t\t\t#           Select game:                     #");
-    Console.WriteLine("\t\t\t\t#           A - Addition                     #");
-    Console.WriteLine("\t\t\t\t#           S - Subtraction                  #");
-    Console.WriteLine("\t\t\t\t#           M - Multiplication               #");
-    Console.WriteLine("\t\t\t\t#           D - Division                     #");
-    Console.WriteLine("\t\t\t\t#           R - Return to main menu          #");
-    Console.WriteLine("\t\t\t\t##############################################");
-    Console.Write("\n\t\t\t\tEnter selection: ");
+    Console.WriteLine($"{tabs}##############################################");
+    Console.WriteLine($"{tabs}#           Select game:                     #");
+    Console.WriteLine($"{tabs}#           A - Addition                     #");
+    Console.WriteLine($"{tabs}#           S - Subtraction                  #");
+    Console.WriteLine($"{tabs}#           M - Multiplication               #");
+    Console.WriteLine($"{tabs}#           D - Division                     #");
+    Console.WriteLine($"{tabs}#           R - Return to main menu          #");
+    Console.WriteLine($"{tabs}##############################################");
+    Console.Write($"\n{tabs}Enter selection: ");
     var gameSelected = Console.ReadLine();
 
     switch (gameSelected.Trim().ToUpper())
     {
         case "A":
+            Console.Clear();
+            Console.WriteLine($"{tabs}######### Addition game selected... #########\n");
             Addition();
             break;
         case "S":
+            Console.Clear();
+            Console.WriteLine($"{tabs}######### Subtraction game selected... #########\n");
             Subtraction();
             break;
         case "M":
+            Console.Clear();
+            Console.WriteLine($"{tabs}######### Multiplication game selected... #########\n");
             Multiplication();
             break;
         case "D":
+            Console.Clear();
+            Console.WriteLine($"{tabs}######### Division game selected... #########\n");
             Division();
             break;
         case "R":
@@ -133,55 +142,69 @@ void GameSelect()
 
 void Addition()
 {
-    Console.Clear();
-    Console.WriteLine("\t\t\t\t######### Addition game selected... #########\n");
-
     firstNum = random.Next(1, 99);
     secondNum = random.Next(1, 99);
     
-    Console.Write($"\t\t\t\t{firstNum} + {secondNum} = ? ");
+    Console.Write($"{tabs}{firstNum} + {secondNum} = ? ");
     var answer = Console.ReadLine();
 
     while(int.Parse(answer) != firstNum + secondNum )
     {
-        Console.WriteLine("\t\t\t\tIncorrect. Score reset. Try again.");
+        Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.\n");
         user.score = 0;
         Console.Write($"\t\t\t\t{firstNum} + {secondNum} = ? ");
         answer = Console.ReadLine();
     }
+
     user.score++;
-    Console.WriteLine($"\t\t\t\tCorrect!\n\t\t\t\tScore: {user.score}");
-    GameSelect();
+    Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
+    Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
+    var continueOrReturn = Console.ReadLine();
+
+    if (continueOrReturn.Trim().ToUpper() == "R")
+    {
+        GameSelect();
+    }
+    else
+    {
+        Subtraction();
+    }
+
 }
 
 void Subtraction()
 {
-    Console.Clear();
-    Console.WriteLine("\t\t\t\t######### Subtraction game selected... #########\n");
-
     firstNum = random.Next(1, 99);
     secondNum = random.Next(1, 99);
 
-    Console.Write($"\t\t\t\t{firstNum} - {secondNum} = ? ");
+    Console.Write($"{tabs}{firstNum} - {secondNum} = ? ");
     var answer = Console.ReadLine();
 
     while (int.Parse(answer) != firstNum - secondNum)
     {
-        Console.WriteLine("\t\t\t\tIncorrect. Score reset. Try again.");
+        Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.\n");
         user.score = 0;
-        Console.Write($"\t\t\t\t{firstNum} - {secondNum} = ? ");
+        Console.Write($"{tabs}{firstNum} - {secondNum} = ? ");
         answer = Console.ReadLine();
     }
+
     user.score++;
-    Console.WriteLine($"\t\t\t\tCorrect!\n\t\t\t\tScore: {user.score}");
-    GameSelect();
+    Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
+    Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
+    var continueOrReturn = Console.ReadLine();
+
+    if (continueOrReturn.Trim().ToUpper() == "R")
+    {
+        GameSelect();
+    }
+    else
+    {
+        Subtraction();
+    }
 }
 
 void Multiplication()
 {
-    Console.Clear();
-    Console.WriteLine("\t\t\t\t######### Multiplication game selected... #########\n");
-
     firstNum = random.Next(1, 99);
     secondNum = random.Next(1, 99);
 
@@ -190,20 +213,29 @@ void Multiplication()
 
     while (int.Parse(answer) != firstNum * secondNum)
     {
-        Console.WriteLine("\t\t\t\tIncorrect. Score reset. Try again.");
+        Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.");
         user.score = 0;
         Console.Write($"\t\t\t\t{firstNum} x {secondNum} = ? ");
         answer = Console.ReadLine();
     }
+
     user.score++;
-    Console.WriteLine($"\t\t\t\tCorrect!\n\t\t\t\tScore: {user.score}");
-    GameSelect();
+    Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
+    Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
+    var continueOrReturn = Console.ReadLine();
+
+    if (continueOrReturn.Trim().ToUpper() == "R")
+    {
+        GameSelect();
+    }
+    else
+    {
+        Subtraction();
+    }
 }
 
 void Division()
 {
-    Console.WriteLine("\t\t\t\t######### Division game selected... #########\n");
-
     firstNum = random.Next(1, 99);
     secondNum = random.Next(1, 99);
 
@@ -213,18 +245,29 @@ void Division()
         secondNum = random.Next(1, 99);
     }
 
-    Console.Write($"\t\t\t\t{firstNum} / {secondNum} = ? ");
+    Console.Write($"{tabs}{firstNum} / {secondNum} = ? ");
     var answer = Console.ReadLine();
 
     while (int.Parse(answer) != firstNum / secondNum)
     {
-        Console.WriteLine("\t\t\t\tIncorrect. Score reset. Try again.");
+        Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.");
         user.score = 0;
-        Console.Write($"\t\t\t\t{firstNum} / {secondNum} = ? ");
+        Console.Write($"{tabs}{firstNum} / {secondNum} = ? ");
         answer = Console.ReadLine();
     }
+
     user.score++;
-    Console.WriteLine($"\t\t\t\tCorrect!\n\t\t\t\tScore: {user.score}");
-    GameSelect();
+    Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {user.score}\n");
+    Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
+    var continueOrReturn = Console.ReadLine();
+
+    if (continueOrReturn.Trim().ToUpper() == "R")
+    {
+        GameSelect();
+    }
+    else
+    {
+        Subtraction();
+    }
 }
 
