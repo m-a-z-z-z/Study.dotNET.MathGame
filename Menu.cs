@@ -106,19 +106,19 @@ internal class Menu
             case "S":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Subtraction game selected... #########\n");
-                Game subtractionGame = new Game(GameType.Addition);
+                Game subtractionGame = new Game(GameType.Subtraction);
                 gameEngine.playGame(subtractionGame, '-');
                 break;
             case "M":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Multiplication game selected... #########\n");
-                Game multiplicationGame = new Game(GameType.Addition);
+                Game multiplicationGame = new Game(GameType.Multiplication);
                 gameEngine.playGame(multiplicationGame, '*');
                 break;
             case "D":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Division game selected... #########\n");
-                Game divisionGame = new Game(GameType.Addition);
+                Game divisionGame = new Game(GameType.Division);
                 gameEngine.playGame(divisionGame, '/');
                 break;
             case "R":
