@@ -1,6 +1,4 @@
-﻿using MathGame.Model;
-
-namespace MathGame;
+﻿namespace MathGame.Model;
 
 internal class GameEngine
 {
@@ -41,19 +39,24 @@ internal class GameEngine
         while (int.Parse(userAnswer) != correctAnswer)
         {
             Console.WriteLine($"{tabs}Incorrect. Score reset. Try again.\n");
-            game.score = 0;
+            game.Score = 0;
             Console.Write($"\t\t\t\t{firstNum} {mathOperator} {secondNum} = ? ");
             userAnswer = Console.ReadLine();
         }
 
-        game.score++;   // if it gets here, you got it right so increment score
+        game.Score++;   // if it gets here, you got it right so increment score
 
-        Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {game.score}\n");
+        Console.WriteLine($"{tabs}Correct!\n{tabs}Score: {game.Score}\n");
         Console.Write($"{tabs}Press enter to continue.\n{tabs}R - Return to game select\n{tabs}");
         var continueOrReturn = Console.ReadLine();
 
         if (continueOrReturn.Trim().ToUpper() == "R")
         {
+            Console.Clear();
+            Console.Write("Enter name to save score: ");
+            game.PlayerName = Console.ReadLine();
+            game.Date = DateTime.UtcNow;
+            Helper.SaveGame(game);
             Menu.GameSelectMenu();
         }
         else

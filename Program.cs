@@ -1,4 +1,4 @@
-﻿using MathGame;
+﻿using MathGame.Model;
 
 Menu.MainMenu();
 

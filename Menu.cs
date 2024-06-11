@@ -1,10 +1,7 @@
-﻿using MathGame.Model;
-
-namespace MathGame;
+﻿namespace MathGame.Model;
 
 internal class Menu
 {
-    internal static Game game = new Game();
     internal static GameEngine gameEngine = new GameEngine();
     internal static void MainMenu()
     { 
@@ -70,6 +67,7 @@ internal class Menu
                     {
                         Console.Clear();
                         Console.WriteLine("View highscores selected");
+                        Helper.PrintHistory();
 
                     }
                     else if (selectedOption == 4)
@@ -102,22 +100,26 @@ internal class Menu
             case "A":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Addition game selected... #########\n");
-                gameEngine.playGame(game, '+');
+                Game additionGame = new Game(GameType.Addition);
+                gameEngine.playGame(additionGame, '+');
                 break;
             case "S":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Subtraction game selected... #########\n");
-                gameEngine.playGame(game, '-');
+                Game subtractionGame = new Game(GameType.Addition);
+                gameEngine.playGame(subtractionGame, '-');
                 break;
             case "M":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Multiplication game selected... #########\n");
-                gameEngine.playGame(game, '*');
+                Game multiplicationGame = new Game(GameType.Addition);
+                gameEngine.playGame(multiplicationGame, '*');
                 break;
             case "D":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Division game selected... #########\n");
-                gameEngine.playGame(game, '/');
+                Game divisionGame = new Game(GameType.Addition);
+                gameEngine.playGame(divisionGame, '/');
                 break;
             case "R":
                 Console.Clear();

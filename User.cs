@@ -2,6 +2,6 @@
 
 internal class User
 {
-    public string name { get; set; }
-    public int score { get; set; }
+    public string Name { get; set; }
+    public int HighScore { get; set; }
 }
