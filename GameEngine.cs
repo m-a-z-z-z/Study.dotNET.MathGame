@@ -2,7 +2,7 @@
 
 internal class GameEngine
 {
-    internal void playGame(Game game, char mathOperator)
+    internal void PlayGame(Game game, char mathOperator)
     {
         Random random = new Random();
         string tabs = "\t\t\t\t";
@@ -53,15 +53,12 @@ internal class GameEngine
         if (continueOrReturn.Trim().ToUpper() == "R")
         {
             Console.Clear();
-            Console.Write("Enter name to save score: ");
-            game.PlayerName = Console.ReadLine();
-            game.Date = DateTime.UtcNow;
             Helper.SaveGame(game);
             Menu.GameSelectMenu();
         }
         else
         {
-            playGame(game, mathOperator);
+            PlayGame(game, mathOperator);
         }
     }
 

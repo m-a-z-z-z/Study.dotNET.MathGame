@@ -3,11 +3,11 @@
 internal class Game
 {
     public int Score { get; set; }
-    public DateTime Date { get; set; }
+    public string Date { get; set; }
     public GameType GameMode { get; set; }
     public string PlayerName { get; set; }
 
-    internal Game(GameType gameMode, int score, DateTime date, String playerName)
+    internal Game(GameType gameMode, int score, string date, String playerName)
     {
         GameMode = gameMode;
         Score = score;

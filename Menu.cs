@@ -60,19 +60,21 @@ internal class Menu
                     else if (selectedOption == 2)
                     {
                         Console.Clear();
-                        Console.WriteLine("Load game selected");
-
+                        Console.WriteLine($"{tabs}Load game selected");
+                        throw new NotImplementedException();
                     }
                     else if (selectedOption == 3)
                     {
                         Console.Clear();
-                        Console.WriteLine("View highscores selected");
                         Helper.PrintHistory();
-
+                        Console.WriteLine($"\n\n{tabs}Press enter to return to menu");
+                        Console.ReadLine();
+                        Console.Clear();
+                        MainMenu();
                     }
                     else if (selectedOption == 4)
                     {
-                        Console.WriteLine("Quit selected");
+                        Console.WriteLine($"{tabs}Exiting game...");
                         Environment.Exit(0);
                     }
                     break;
@@ -101,25 +103,25 @@ internal class Menu
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Addition game selected... #########\n");
                 Game additionGame = new Game(GameType.Addition);
-                gameEngine.playGame(additionGame, '+');
+                gameEngine.PlayGame(additionGame, '+');
                 break;
             case "S":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Subtraction game selected... #########\n");
                 Game subtractionGame = new Game(GameType.Subtraction);
-                gameEngine.playGame(subtractionGame, '-');
+                gameEngine.PlayGame(subtractionGame, '-');
                 break;
             case "M":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Multiplication game selected... #########\n");
                 Game multiplicationGame = new Game(GameType.Multiplication);
-                gameEngine.playGame(multiplicationGame, '*');
+                gameEngine.PlayGame(multiplicationGame, '*');
                 break;
             case "D":
                 Console.Clear();
                 Console.WriteLine($"{tabs}######### Division game selected... #########\n");
                 Game divisionGame = new Game(GameType.Division);
-                gameEngine.playGame(divisionGame, '/');
+                gameEngine.PlayGame(divisionGame, '/');
                 break;
             case "R":
                 Console.Clear();
