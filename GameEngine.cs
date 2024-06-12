@@ -36,7 +36,7 @@ internal class GameEngine
         Console.Write($"{tabs}{firstNum} {mathOperator} {secondNum} = ? ");
         userAnswer = Console.ReadLine();
 
-        userAnswer = Helper.ValidateInput(userAnswer);
+        userAnswer = Helper.ValidateAnswer(userAnswer);
 
         while (int.Parse(userAnswer) != correctAnswer)
         {

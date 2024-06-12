@@ -16,9 +16,9 @@ internal static class Helper
     internal static void SaveGame(Game game)
     {
         DateTime now = DateTime.Now;
-        Console.Write("Enter name to save score: ");
+        Console.Write("\t\t\t\tEnter name to save score: ");
         game.PlayerName = Console.ReadLine();
-        game.Date = DateTime.Parse(now.ToString("dd-MM-yyyy"));
+        game.Date = now;
         games.Add(game);
     }
 
@@ -32,7 +32,7 @@ internal static class Helper
         Console.WriteLine("\t\t\tDate\tPlayer name\tGame mode\tScore");
         foreach (var game in games)
         {
-            Console.WriteLine($"\t\t\t{game.Date} --- {game.PlayerName} --- {game.GameMode} --- {game.Score}");
+            Console.WriteLine($"\t\t\t{game.Date:dd-MM-yyyy} --- {game.PlayerName} --- {game.GameMode} --- {game.Score}");
         }
         Console.WriteLine($"\t\t\t\t##############################################");
 
@@ -43,11 +43,11 @@ internal static class Helper
         throw new NotImplementedException();
     }
 
-    internal static string? ValidateInput(string? userAnswer)
+    internal static string? ValidateAnswer(string? userAnswer)
     {
         while (string.IsNullOrEmpty(userAnswer) || !Int32.TryParse(userAnswer, out int result))
         {
-            Console.Write("Invalid input. Please enter a number: ");
+            Console.Write("\t\t\t\tInvalid input. Please enter a number: ");
             userAnswer = Console.ReadLine();
         }
         return userAnswer;
