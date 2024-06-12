@@ -6,7 +6,7 @@ internal class GameEngine
     {
         Random random = new Random();
         string tabs = "\t\t\t\t";
-        string? userAnswer;
+        string userAnswer;
         int correctAnswer = 0;
         int firstNum = random.Next(1, 99);
         int secondNum = random.Next(1, 99);
@@ -35,6 +35,8 @@ internal class GameEngine
 
         Console.Write($"{tabs}{firstNum} {mathOperator} {secondNum} = ? ");
         userAnswer = Console.ReadLine();
+
+        userAnswer = Helper.ValidateInput(userAnswer);
 
         while (int.Parse(userAnswer) != correctAnswer)
         {
