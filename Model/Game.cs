@@ -3,15 +3,15 @@
 internal class Game
 {
     public int Score { get; set; }
-    public string Date { get; set; }
+    public DateTime Date { get; set; }
     public GameType GameMode { get; set; }
     public string PlayerName { get; set; }
 
-    internal Game(GameType gameMode, int score, string date, String playerName)
+    internal Game(GameType gameMode, int score, string date, string playerName)
     {
         GameMode = gameMode;
         Score = score;
-        Date = date;
+        Date = DateTime.Parse(date);
         PlayerName = playerName;
     }
 
