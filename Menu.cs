@@ -199,7 +199,8 @@ internal class Menu
                         Console.WriteLine($"{tabs}######### Viewing Addition highscores... #########\n");
                         var gamesToPrint = Helper.games.Where(x => x.Score > 0 && x.GameMode == GameType.Addition)
                             .OrderByDescending(x => x.Score)
-                            .ThenBy(x => x.Date);
+                            .ThenBy(x => x.Date)
+                            .Take(10);
                         Helper.PrintHighscores(gamesToPrint.ToList());
                     }
                     else if (selectedOption == 2)
@@ -208,7 +209,8 @@ internal class Menu
                         Console.WriteLine($"{tabs}######### Viewing Subtraction highscores... #########\n");
                         var gamesToPrint = Helper.games.Where(x => x.Score > 0 && x.GameMode == GameType.Subtraction)
                             .OrderByDescending(x => x.Score)
-                            .ThenBy(x => x.Date);
+                            .ThenBy(x => x.Date)
+                            .Take(10);
                         Helper.PrintHighscores(gamesToPrint.ToList());
                     }
                     else if (selectedOption == 3)
@@ -217,7 +219,8 @@ internal class Menu
                         Console.WriteLine($"{tabs}######### Viewing Multiplication highscores... #########\n");
                         var gamesToPrint = Helper.games.Where(x => x.Score > 0 && x.GameMode == GameType.Multiplication)
                             .OrderByDescending(x => x.Score)
-                            .ThenBy(x => x.Date);
+                            .ThenBy(x => x.Date)
+                            .Take(10);
                         Helper.PrintHighscores(gamesToPrint.ToList());
                     }
                     else if (selectedOption == 4)
@@ -226,7 +229,8 @@ internal class Menu
                         Console.WriteLine($"{tabs}######### Viewing Division highscores... #########\n");
                         var gamesToPrint = Helper.games.Where(x => x.Score > 0 && x.GameMode == GameType.Division)
                             .OrderByDescending(x => x.Score)
-                            .ThenBy(x => x.Date);
+                            .ThenBy(x => x.Date)
+                            .Take(10);
                         Helper.PrintHighscores(gamesToPrint.ToList());
                     }
                     else if (selectedOption == 5)
